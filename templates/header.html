@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav" style="background-color: rgba(1, 13, 37, 0)">
+    <div class="container">
+        <a class="navbar-brand " href="/">NEWSIFY <span style="font-size:15px !important;" class="navbar-text">
+     - News as fast as light !
+  </span></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                    {% if 'premium' in request.path %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="{% url 'NewsArticle:free_news' %}">Free Content</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="{% url 'NewsArticle:premium_news' %}">Premium Content</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'authentication:logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'authentication:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'authentication:signup' %}">Signup</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>

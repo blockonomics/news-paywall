@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block head_title %}Newsify{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 mx-auto">
+                <div class="mt-2 pb-3"></div>
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h4">Free News</h1>
+                        <hr>
+                        <div class="row justify-content-center">
+                            <div class="col col-8  mx-auto">
+                                {% for news in  news_list %}
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3>{{ news.title }}</h3>
+                                            <hr>
+                                            <img src="{{ news.image.url }}" class="img" alt="Image not available">
+                                            <br>
+                                            <p>{{ news.content|slice:"0:500" }} ....</p>
+                                            <br>
+                                            <div class="text-center">
+                                                <a href="{% url 'NewsArticle:read_more' pk=news.id %}"><button type="submit" style="text-align: center"
+                                                        class="btn btn-success">Read More &raquo;
+                                                </button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

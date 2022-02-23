@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block head_title %}Signup{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="mt-5 "></div>
+        <div class="row">
+            <div class="col col-5  mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h4">Sign Up</h1>
+                        <hr>
+                        <form class="signup" id="signup_form" method="post">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block">Sign Up &raquo;
+                                </button>
+                            </div>
+                        </form>
+                        <br>
+                        <p>Already have an account? Then please <a href="{% url 'authentication:login' %}">Sign In</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

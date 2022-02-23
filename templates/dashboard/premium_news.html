@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block head_title %}Newsify{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 mx-auto">
+                <div class="mt-2 pb-3"></div>
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h4">Premium News</h1>
+                        <hr>
+                        <div class="row justify-content-center">
+                            <div class="col col-8  mx-auto">
+                                {% if request.user.premium_status == 2 %}
+                                    {% for news in  news_list %}
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h3>{{ news.title }}</h3>
+                                                <hr>
+                                                <img src="{{ news.image.url }}" class="img" alt="Image not available">
+                                                <br>
+                                                <p>{{ news.content|slice:"0:500" }} ....</p>
+                                                <br>
+                                                <div class="text-center">
+                                                    <a href="{% url 'NewsArticle:read_more' pk=news.id %}">
+                                                        <button type="submit" style="text-align: center"
+                                                                class="btn btn-success">Read More &raquo;
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                    {% endfor %}
+                                {% elif request.user.premium_status == 0 or request.user.premium_status == 1 %}
+                                    <div class="card">
+                                        <div class="card-body">
+                                            You're Payment Status is in Pending state,you can wait or click <a
+                                                href="{% url "NewsArticle:cancel_payment" pk=request.user.id %}">here</a>
+                                            to cancel and start new payment again.
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <p>Buy The Premium Feature for $10, to access premiums news</p>
+                                    <button type="submit" style="text-align: center" id="pay"
+                                            class="btn btn-success">Pay With Bitcoin $10
+                                    </button>
+                                    <br>
+                                    <br>
+                                    <div id="payment_area"></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Creating widget at the area payment_area div
+        function pay() {
+            Blockonomics.widget({
+                msg_area: 'payment_area',
+                uid: '<ur widget uuid here>',
+                email: '{{ request.user.email }}'
+            });
+        }
+
+        // To Reload on payment succes so that the user can see the premium content
+        window.blockonomicsPaymentCallback = function (payment) {
+            if (payment.status === 2) {
+                setTimeout(() => { window.location.reload() }, 3000);
+            }
+        };
+        document.getElementById('pay').onclick = function () {
+            pay()
+        };
+    </script>
+{% endblock %}
