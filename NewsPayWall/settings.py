@@ -22,11 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=cr4j4n5pj#z7vja*%t8zdqqxnyvmu9^q)be#m@02c@)egrn7='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
-API_KEY = ''
+ALLOWED_HOSTS = ['blockonomics.loca.lt']
+CSRF_TRUSTED_ORIGINS = ['https://blockonomics.loca.lt']
+API_KEY = 'NFXOA7aU619ypdP9AskRw48T0Jo3bnaarhgxbEZzppA'
 
 # Application definition
 

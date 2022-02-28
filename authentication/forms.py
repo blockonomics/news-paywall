@@ -5,7 +5,10 @@ from django.contrib.auth import get_user_model
 
 
 class UserRegistrationForm(UserCreationForm):
+    # Making these fields required
     email = forms.EmailField()
+    first_name = forms.CharField(max_length=50)
+    last_name = forms.CharField(max_length=50)
 
     class Meta:
         model = get_user_model()
