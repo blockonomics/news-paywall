@@ -37,9 +37,9 @@ class MyAccountManager(BaseUserManager):
 
 # Create your models here.
 class CustomUser(AbstractUser):
-    # ( -1 Not Started ) (0 - Unconfirmed ) (1 - Partially Confirmed ) ( 2 - Confirmed )
+    # ( -1 - PAYMENT_ERROR) (0 - UN PAID ) (1 - IN PROCESS ) ( 2 - Confirmed )
     email = models.EmailField(_('email address'), unique=True)
-    premium_status = models.IntegerField(null=False, default=-1)
+    premium_status = models.IntegerField(null=False, default=0)  # Default will be unpaid
     username = None
     objects = MyAccountManager()
 

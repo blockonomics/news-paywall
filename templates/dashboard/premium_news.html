@@ -33,7 +33,7 @@
                                         </div>
                                         <br>
                                     {% endfor %}
-                                {% elif request.user.premium_status == 0 or request.user.premium_status == 1 %}
+                                {% elif request.user.premium_status == 1 %}
                                     <div class="card">
                                         <div class="card-body">
                                             You're Payment Status is in Pending state,you can wait or click <a
@@ -42,6 +42,10 @@
                                         </div>
                                     </div>
                                 {% else %}
+                                    {% if request.user.premium_status == -1 %}
+                                        <span style="color:red">Paid BTC amount did not match the expected value</span>
+                                        <br>
+                                    {% endif %}
                                     <p>Buy The Premium Feature for $10, to access premiums news</p>
                                     <button type="submit" style="text-align: center" id="pay"
                                             class="btn btn-success">Pay With Bitcoin $10
@@ -67,12 +71,13 @@
             });
         }
 
-        // To Reload on payment succes so that the user can see the premium content
+        // To Reload on payment success so that the user can see the premium content
         window.blockonomicsPaymentCallback = function (payment) {
             if (payment.status === 2) {
                 setTimeout(() => { window.location.reload() }, 3000);
             }
         };
+
         document.getElementById('pay').onclick = function () {
             pay()
         };
