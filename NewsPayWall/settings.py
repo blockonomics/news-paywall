@@ -24,9 +24,9 @@ SECRET_KEY = 'django-insecure-=cr4j4n5pj#z7vja*%t8zdqqxnyvmu9^q)be#m@02c@)egrn7=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['blockonomics.loca.lt']
-CSRF_TRUSTED_ORIGINS = ['https://blockonomics.loca.lt']
-API_KEY = 'NFXOA7aU619ypdP9AskRw48T0Jo3bnaarhgxbEZzppA'
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = []
+API_KEY = 'your Blockonomics API HERE'
 
 # Application definition
 
