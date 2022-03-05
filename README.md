@@ -7,7 +7,7 @@ This demo uses the Payment Widget provided by Blockonomics to receive Bitcoin pa
 <details>
 <summary> Installing dependencies </summary>
 
-* Create a virtual environment using python `python3 -m venv env`
+* Create a virtual environment using python3.9 `python3.9 -m venv env`
 * Activate the virtual environment `source env/bin/activate`
 * Install the requirements `pip install -r requirements.txt`
 
