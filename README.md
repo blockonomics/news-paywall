@@ -30,7 +30,7 @@ This demo uses the Payment Widget provided by Blockonomics to receive Bitcoin pa
 <details>
 <summary> Blockonomics Website Setup </summary>
 
-* Create your [Blockonomics payment widge](https://www.blockonomics.co/merchants#/buttons?products). Get the UUID of the product and paste in the premium_news.html page, found [here](https://github.com/SyedAnas26/news-paywall/blob/5857c3ea7069e3410d0c021312f525d26955eab2/templates/dashboard/premium_news.html#L69). 
+* Create your [Blockonomics payment widget](https://www.blockonomics.co/merchants#/buttons?products). Get the UUID of the product and paste in the premium_news.html page, found [here](https://github.com/SyedAnas26/news-paywall/blob/5857c3ea7069e3410d0c021312f525d26955eab2/templates/dashboard/premium_news.html#L69). 
 * Go to `OPTIONS` in the PAYMENT BUTTONS/URL tab on [merchants page](https://www.blockonomics.co/merchants). You need to setup the `ORDER HOOK URL` and `Redirection URL`.
 * To test the code locally, follow instructions from [this](https://www.youtube.com/watch?v=6Ydk32avIgo) video and make sure to place the `<domain>/payment-webhook` as your order hook url and `<domain>/dashboard` as redirection url. Here `<domain>` is the domain you get from reverse proxy (Ngrok/localtunnel).
 * Make sure to save your changes!
